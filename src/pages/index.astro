@@ -84,7 +84,8 @@ const cronograma = [
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Propuesta Kargo-Log 2026</title>
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <title>Propuesta Kargo-Log 2026 | Matías Laporta</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -649,11 +650,13 @@ const cronograma = [
         let particles = [];
         let raf = null;
         let active = false;
+        let count = 46;
         const mouse = { x: null, y: null };
 
         // Parámetros idénticos a matiaslaporta.com (#network-canvas)
         const SIDEBAR_W = 288; // w-72 = 18rem = 288px
-        const COUNT = 70; // cantidad fija de nodos (igual que la web principal)
+        const COUNT_DESKTOP = 46; // nodos en desktop (−35% respecto a los 70 originales)
+        const COUNT_MOBILE = 20; // nodos en móvil
         const LINK_DIST = 120; // distancia para unir nodos entre sí
         const MOUSE_DIST = 180; // radio de interacción con el cursor
         const COLOR = "0, 229, 255"; // #00E5FF
@@ -664,6 +667,7 @@ const cronograma = [
           dpr = Math.min(window.devicePixelRatio || 1, 2);
           const isLg = window.matchMedia("(min-width: 1024px)").matches;
           offsetLeft = isLg ? SIDEBAR_W : 0;
+          count = isLg ? COUNT_DESKTOP : COUNT_MOBILE;
           w = window.innerWidth - offsetLeft;
           h = window.innerHeight;
           canvas.style.left = offsetLeft + "px";
@@ -676,8 +680,8 @@ const cronograma = [
         }
 
         function seed() {
-          // Cantidad fija de 70 nodos, igual que la web principal
-          particles = Array.from({ length: COUNT }, () => ({
+          // Cantidad de nodos según el dispositivo (móvil vs desktop)
+          particles = Array.from({ length: count }, () => ({
             x: Math.random() * w,
             y: Math.random() * h,
             vx: (Math.random() - 0.5) * 1.5,
