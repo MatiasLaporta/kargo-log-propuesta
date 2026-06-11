@@ -216,7 +216,9 @@ const paleta = [
     >
       <!-- Encabezado de la propuesta -->
       <div class="border-b border-slate-800/80 px-6 py-7">
-        <img src="/logo-ml-inv.png" alt="Matías Laporta" class="mb-5 h-12 w-auto" />
+        <a href="https://matiaslaporta.com/" target="_blank" rel="noopener noreferrer">
+          <img src="/logo-ml-inv.png" alt="Matías Laporta" class="mb-5 h-12 w-auto transition hover:opacity-80" />
+        </a>
         <div class="flex items-center gap-2">
           <span class="h-2 w-2 rounded-full bg-yellow-400"></span>
           <span class="text-[11px] font-semibold tracking-widest text-slate-500 uppercase">
@@ -266,25 +268,62 @@ const paleta = [
     <!-- ===================================================================== -->
     <!-- BARRA SUPERIOR MÓVIL (lg:hidden)                                        -->
     <!-- ===================================================================== -->
-    <header class="lg:hidden sticky top-0 z-20 border-b border-slate-800/80 bg-[#0b0f19]/95 backdrop-blur">
+    <header class="lg:hidden sticky top-0 z-30 border-b border-slate-800/80 bg-[#0b0f19]/95 backdrop-blur">
       <div class="flex items-center justify-between px-4 py-4">
-        <h2 class="text-base font-bold text-white">
-          Propuesta <span class="text-yellow-400">Kargo-Log</span> 2026
-        </h2>
+        <div class="flex items-center gap-2.5">
+          <img src="/logo-ml-inv.png" alt="Matías Laporta" class="h-7 w-auto" />
+          <h2 class="text-base font-bold text-white">
+            Propuesta <span class="text-yellow-400">Kargo-Log</span>
+          </h2>
+        </div>
+        <button
+          id="menu-toggle"
+          type="button"
+          aria-label="Abrir menú"
+          class="flex h-10 w-10 items-center justify-center rounded-lg border border-slate-700 text-slate-200 transition hover:bg-slate-800/50"
+        >
+          <svg id="menu-icon-open" class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M4 6h16M4 12h16M4 18h16" stroke-linecap="round" />
+          </svg>
+          <svg id="menu-icon-close" class="hidden h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M6 6l12 12M18 6L6 18" stroke-linecap="round" />
+          </svg>
+        </button>
       </div>
-      <nav class="flex gap-2 overflow-x-auto px-4 pb-3">
-        {
-          tabs.map((t) => (
-            <button
-              type="button"
-              data-tab={t.id}
-              class="nav-top shrink-0 rounded-full border border-slate-700 px-4 py-1.5 text-xs font-medium whitespace-nowrap text-slate-300 transition"
-            >
-              {t.label}
-            </button>
-          ))
-        }
-      </nav>
+
+      <!-- Menú desplegable -->
+      <div id="mobile-menu" class="hidden border-t border-slate-800/80 px-4 py-4">
+        <div class="flex items-center gap-2 px-1">
+          <span class="h-2 w-2 rounded-full bg-yellow-400" />
+          <p class="text-[11px] font-semibold tracking-widest text-slate-500 uppercase">
+            Propuesta confidencial
+          </p>
+        </div>
+        <ul class="mt-3 space-y-1.5">
+          {
+            tabs.map((t) => (
+              <li>
+                <button
+                  type="button"
+                  data-tab={t.id}
+                  class="nav-top flex w-full items-center gap-3 rounded-lg border border-slate-800 px-3 py-2.5 text-left text-sm font-medium text-slate-300 transition"
+                >
+                  <span class="font-mono text-xs text-slate-600 tabular-nums">{t.n}</span>
+                  {t.label}
+                </button>
+              </li>
+            ))
+          }
+        </ul>
+        <a
+          href="https://calendar.app.google/mTu5R8CYQ7A2BKYZ7"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="mt-4 block w-full rounded-lg bg-yellow-400 px-4 py-3 text-center text-sm font-semibold text-slate-900 transition hover:bg-yellow-300"
+        >
+          Agendar Kick-off
+        </a>
+      </div>
     </header>
 
     <!-- ===================================================================== -->
@@ -382,7 +421,7 @@ const paleta = [
               <!-- Sub-bloque 3 -->
               <div class="border-l-2 border-yellow-400/50 pl-5 sm:pl-6">
                 <h3 class="text-lg font-semibold text-white lg:text-xl">
-                  El Elefante en la Habitación (La Identidad Dual).
+                  El Elefante en la Habitación <br class="sm:hidden" />(La Identidad Dual).
                 </h3>
                 <p class="mt-3 max-w-3xl text-base leading-relaxed text-slate-400 lg:text-lg">
                   Detengamos el debate de si debes posicionar tu nombre o la marca Kargo-Log. En la
@@ -761,6 +800,118 @@ const paleta = [
                   </div>
                 </div>
               </div>
+
+              <!-- ============================================================ -->
+              <!-- PROTOTIPO ALPHA · Tarjeta Digital (Digital-Card)             -->
+              <!-- ============================================================ -->
+              <!-- Cabecera independiente (estilo de los demás tabs) -->
+              <p class="mt-12 text-sm font-semibold tracking-widest text-[#FF5722] uppercase">
+                Prototipo Alpha · Tarjeta Digital
+              </p>
+              <div class="mt-4 bg-gradient-to-br from-[#202225] via-[#0A192F] to-[#202225] bg-clip-text text-2xl font-bold tracking-tight text-transparent sm:text-3xl">
+                Tu presentación de bolsillo.
+              </div>
+              <p class="mt-3 max-w-2xl text-sm leading-relaxed text-[#202225]/70">
+                El activo de conversión rápida diseñado para la interacción cara a cara, eventos
+                industriales y prospección directa vía WhatsApp o QR.
+              </p>
+
+              <!-- Contenedor exterior plano (Gris Humo) para resaltar el teléfono -->
+              <div class="mt-6 rounded-2xl border border-black/10 bg-[#F7F8FA] p-6 sm:p-10">
+                <!-- Mockup del smartphone (Lienzo de Luz) -->
+                <div class="relative mx-auto max-w-[360px] overflow-hidden rounded-[40px] border-[12px] border-slate-900 bg-[#FDFCF0] font-sans shadow-2xl">
+                  <!-- Isla dinámica / notch -->
+                  <div class="absolute left-1/2 top-3 z-30 h-6 w-24 -translate-x-1/2 rounded-full bg-slate-900" />
+                  <!-- Textura blueprint dentro de la pantalla -->
+                  <div class="kl-blueprint pointer-events-none absolute inset-0 opacity-[0.05]" />
+                  <!-- Ruta de suministro narrativa (guiones naranjas en movimiento) -->
+                  <svg class="pointer-events-none absolute inset-0 h-full w-full" preserveAspectRatio="none" viewBox="0 0 200 640" fill="none" aria-hidden="true">
+                    <path class="kl-path" d="M100 30 C 55 130, 150 230, 100 330 S 45 520, 110 610" stroke="#FF5722" stroke-width="1.5" stroke-opacity="0.35" stroke-linecap="round" />
+                  </svg>
+
+                  <!-- Pantalla -->
+                  <div class="relative z-10 px-5 pb-8 pt-14">
+                    <!-- Bloque de perfil -->
+                    <div class="flex flex-col items-center text-center">
+                      <div class="h-24 w-24 overflow-hidden rounded-full border-4 border-[#FF5722] shadow-lg shadow-[#FF5722]/30">
+                        <img src="/pp.png" alt="Sergio Cachay" class="h-full w-full object-cover" />
+                      </div>
+                      <div class="mt-4 text-lg font-bold text-[#0A192F]">Sergio Cachay</div>
+                      <div class="mt-1 text-xs leading-snug text-[#202225]/70">
+                        Asesor de Confianza en Gestión Empresarial y Operaciones Logísticas
+                      </div>
+                      <img src="/logo-kargo-log.png" alt="Kargo-Log" class="mt-4 h-5 w-auto" />
+                    </div>
+
+                    <!-- Redes (bajo el logotipo) -->
+                    <div class="mt-5 flex items-center justify-center gap-3">
+                      <span class="flex h-9 w-9 cursor-pointer items-center justify-center rounded-full bg-[#0A192F] text-white transition hover:opacity-90">
+                        <svg class="h-4 w-4" viewBox="0 0 24 24" fill="currentColor">
+                          <path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5zM3 9h4v12H3zM9 9h3.8v1.7h.05c.53-1 1.83-2.05 3.77-2.05 4.03 0 4.78 2.65 4.78 6.1V21h-4v-5.4c0-1.3-.02-2.96-1.8-2.96-1.8 0-2.08 1.4-2.08 2.86V21H9z" />
+                        </svg>
+                      </span>
+                      <span class="flex h-9 w-9 cursor-pointer items-center justify-center rounded-full bg-[#FF5722] text-white transition hover:opacity-90">
+                        <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                          <rect x="3" y="5" width="18" height="14" rx="2" />
+                          <path d="M3 7l9 6 9-6" stroke-linecap="round" stroke-linejoin="round" />
+                        </svg>
+                      </span>
+                    </div>
+
+                    <!-- CTA principal de conversión (shimmer) -->
+                    <div class="mt-5">
+                      <span class="kl-shimmer flex w-full cursor-pointer items-center justify-center gap-2 rounded-xl bg-[#FF5722] px-4 py-3 text-sm font-bold text-white shadow-lg shadow-[#FF5722]/30 transition-all duration-300 hover:-translate-y-0.5">
+                        <svg class="h-4 w-4" viewBox="0 0 24 24" fill="currentColor">
+                          <path d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2 22l5.25-1.38c1.45.79 3.08 1.21 4.79 1.21 5.46 0 9.91-4.45 9.91-9.91S17.5 2 12.04 2zm5.8 14.01c-.24.68-1.4 1.3-1.95 1.38-.5.07-1.13.1-1.83-.11-.42-.13-.96-.31-1.65-.61-2.9-1.25-4.79-4.17-4.94-4.36-.14-.19-1.18-1.57-1.18-3 0-1.43.75-2.13 1.02-2.42.27-.29.58-.36.78-.36.19 0 .39 0 .56.01.18.01.42-.07.66.5.24.59.82 2.02.89 2.17.07.14.12.31.02.5-.09.19-.14.31-.28.48-.14.17-.29.37-.42.5-.14.14-.28.29-.12.57.16.28.72 1.18 1.54 1.91 1.06.95 1.95 1.24 2.23 1.38.28.14.44.12.6-.07.16-.19.69-.8.87-1.08.18-.28.36-.23.61-.14.25.09 1.59.75 1.86.89.27.14.45.21.52.32.07.12.07.66-.17 1.34z" />
+                        </svg>
+                        Conectar por WhatsApp
+                      </span>
+                    </div>
+
+                    <!-- Ecosistema comercial (CTAs en azul marino) -->
+                    <div class="mt-4 space-y-3">
+                      <span class="flex cursor-pointer items-center gap-3 rounded-xl bg-[#0A192F] px-4 py-3 text-sm font-medium text-white transition-all duration-300 hover:scale-[1.02]">
+                        <svg class="h-4 w-4 shrink-0 text-[#FF5722]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                          <path d="M3 13l4-4 4 4 7-7M21 6v5h-5" stroke-linecap="round" stroke-linejoin="round" />
+                        </svg>
+                        Ver Casos de Éxito / Trayectoria
+                      </span>
+                      <span class="flex cursor-pointer items-center gap-3 rounded-xl bg-[#0A192F] px-4 py-3 text-sm font-medium text-white transition-all duration-300 hover:scale-[1.02]">
+                        <svg class="h-4 w-4 shrink-0 text-[#FF5722]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                          <rect x="3" y="5" width="13" height="14" rx="2" />
+                          <path d="M16 9l5-3v12l-5-3" stroke-linecap="round" stroke-linejoin="round" />
+                        </svg>
+                        Agendar Diagnóstico en Google Meet
+                      </span>
+                      <span class="flex cursor-pointer items-center gap-3 rounded-xl bg-[#0A192F] px-4 py-3 text-sm font-medium text-white transition-all duration-300 hover:scale-[1.02]">
+                        <svg class="h-4 w-4 shrink-0 text-[#FF5722]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                          <path d="M12 3v12m0 0l-4-4m4 4l4-4M4 19h16" stroke-linecap="round" stroke-linejoin="round" />
+                        </svg>
+                        Descargar Brochure de Servicios Operativos
+                      </span>
+                    </div>
+
+                    <!-- Footer: Guardar Contacto + Compartir Tarjeta -->
+                    <div class="mt-6 space-y-3">
+                      <span class="flex w-full cursor-pointer items-center justify-center gap-2 rounded-xl bg-[#0A192F] px-4 py-3 text-sm font-bold text-white transition hover:opacity-90">
+                        <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                          <path d="M19 21v-7H5v7M12 11V3M9 6l3-3 3 3" stroke-linecap="round" stroke-linejoin="round" />
+                        </svg>
+                        Guardar Contacto
+                      </span>
+                      <span class="flex w-full cursor-pointer items-center justify-center gap-2 rounded-xl border border-[#0A192F]/20 px-4 py-3 text-sm font-semibold text-[#0A192F] transition hover:bg-[#0A192F]/5">
+                        <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                          <circle cx="18" cy="5" r="3" />
+                          <circle cx="6" cy="12" r="3" />
+                          <circle cx="18" cy="19" r="3" />
+                          <path d="M8.6 13.5l6.8 4M15.4 6.5l-6.8 4" stroke-linecap="round" />
+                        </svg>
+                        Compartir Tarjeta
+                      </span>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </section>
@@ -777,7 +928,7 @@ const paleta = [
           <!-- Desglose + ofertas -->
           <div class="mt-10 grid gap-6 lg:grid-cols-[3fr_2fr]">
             <!-- Módulos individuales -->
-            <div class="rounded-xl border border-slate-800 bg-[#0b0f19]/60 p-6 sm:p-7">
+            <div class="rounded-xl border border-slate-800 bg-[#0b0f19]/60 p-6 transition duration-300 hover:border-yellow-400/40 hover:shadow-[0_0_35px_-8px_rgba(250,204,21,0.4)] sm:p-7">
               <h3 class="text-xs font-semibold tracking-widest text-slate-400 uppercase">
                 Módulos individuales
               </h3>
@@ -805,7 +956,7 @@ const paleta = [
 
             <!-- Ofertas -->
             <div class="space-y-5">
-              <div class="rounded-xl border border-slate-800 bg-[#0b0f19]/60 p-6">
+              <div class="rounded-xl border border-slate-800 bg-[#0b0f19]/60 p-6 transition duration-300 hover:border-yellow-400/40 hover:shadow-[0_0_35px_-8px_rgba(250,204,21,0.4)]">
                 <div class="flex items-center justify-between">
                   <h3 class="text-base font-semibold text-white">Paquete 3 Módulos</h3>
                   <span class="rounded-full bg-slate-800 px-3 py-1 text-xs font-bold text-slate-300">
@@ -819,11 +970,11 @@ const paleta = [
               </div>
 
               <!-- Full Stack (destacada) -->
-              <div class="relative overflow-hidden rounded-xl border border-cyan-500/50 bg-gradient-to-b from-cyan-500/10 to-[#0b0f19]/60 p-6">
-                <span class="absolute right-4 top-4 rounded-full bg-cyan-500 px-3 py-1 text-xs font-bold text-slate-900">
+              <div class="relative overflow-hidden rounded-xl border border-yellow-400/50 bg-gradient-to-b from-yellow-400/10 to-[#0b0f19]/60 p-6 transition duration-300 hover:border-yellow-400/60 hover:shadow-[0_0_35px_-8px_rgba(250,204,21,0.45)]">
+                <span class="absolute right-4 top-4 rounded-full bg-yellow-400 px-3 py-1 text-xs font-bold text-slate-900">
                   30% OFF
                 </span>
-                <h3 class="text-base font-semibold text-cyan-300">Full Stack · 5 Módulos</h3>
+                <h3 class="text-base font-semibold text-yellow-400">Full Stack · 5 Módulos</h3>
                 <p class="mt-4 flex items-baseline gap-2">
                   <span class="text-3xl font-bold text-white tabular-nums">$910</span>
                   <span class="text-sm text-slate-400">USD</span>
@@ -837,26 +988,40 @@ const paleta = [
 
           <!-- Costos fijos mensuales -->
           <div class="mt-6 grid gap-5 sm:grid-cols-2">
-            <div class="flex items-center justify-between rounded-xl border border-slate-800 bg-[#0b0f19]/60 p-5">
+            <div class="flex items-center justify-between rounded-xl border border-slate-800 bg-[#0b0f19]/60 p-5 transition duration-300 hover:border-yellow-400/40 hover:shadow-[0_0_35px_-8px_rgba(250,204,21,0.4)]">
               <div>
                 <p class="text-sm font-semibold text-white">Host de la Landing</p>
                 <p class="mt-1 text-xs text-slate-500">Mensual · suscripción</p>
               </div>
-              <span class="text-lg font-bold text-white tabular-nums">$5 <span class="text-sm font-normal text-slate-400">/ mes</span></span>
+              <div class="text-right">
+                <span class="text-lg font-bold text-white tabular-nums">$5 <span class="text-sm font-normal text-slate-400">/ mes</span></span>
+                <p class="font-mono text-xs text-slate-500">S/ 18,75</p>
+              </div>
             </div>
-            <div class="flex items-center justify-between rounded-xl border border-slate-800 bg-[#0b0f19]/60 p-5">
+            <div class="flex items-center justify-between rounded-xl border border-slate-800 bg-[#0b0f19]/60 p-5 transition duration-300 hover:border-yellow-400/40 hover:shadow-[0_0_35px_-8px_rgba(250,204,21,0.4)]">
               <div>
                 <p class="text-sm font-semibold text-white">Host + Mantenimiento</p>
                 <p class="mt-1 text-xs text-slate-500">Mensual · suscripción</p>
               </div>
-              <span class="text-lg font-bold text-white tabular-nums">$20 <span class="text-sm font-normal text-slate-400">/ mes</span></span>
+              <div class="text-right">
+                <span class="text-lg font-bold text-white tabular-nums">$20 <span class="text-sm font-normal text-slate-400">/ mes</span></span>
+                <p class="font-mono text-xs text-slate-500">S/ 75</p>
+              </div>
             </div>
           </div>
 
+          <!-- Nota de conversión de moneda -->
+          <p class="mt-6 rounded-lg border border-slate-800 bg-[#0b0f19]/40 px-4 py-3 text-xs leading-relaxed text-slate-400 transition duration-300 hover:border-yellow-400/40 hover:shadow-[0_0_35px_-8px_rgba(250,204,21,0.4)]">
+            Conversión referencial: <span class="text-slate-200">1 USD ≈ S/ 3,75 (PEN)</span>. Los
+            montos en soles son un <span class="text-slate-200">estimado</span> y pueden variar según
+            el tipo de cambio vigente al momento del pago.
+          </p>
+
           <!-- Cronograma -->
-          <div class="mt-14">
-            <h3 class="text-xs font-semibold tracking-widest text-slate-400 uppercase">
-              Cronograma · 8 semanas
+          <div class="mt-12">
+            <h3 class="text-xs font-semibold tracking-widest uppercase">
+              <span class="text-cyan-400">Cronograma</span>
+              <span class="text-slate-400">· 8 semanas</span>
             </h3>
             <ol class="mt-7 space-y-0 border-l border-slate-800">
               {
@@ -873,7 +1038,7 @@ const paleta = [
 
           <!-- Métodos de pago -->
           <div class="mt-10">
-            <h3 class="text-xs font-semibold tracking-widest text-slate-400 uppercase">
+            <h3 class="text-xs font-semibold tracking-widest text-cyan-400 uppercase">
               Métodos de pago
             </h3>
             <div class="mt-5 flex flex-wrap gap-3">
@@ -883,7 +1048,7 @@ const paleta = [
                   "Tarjeta de crédito (cuotas / suscripción)",
                   "Criptomonedas (BTC y stablecoins L2)",
                 ].map((m) => (
-                  <span class="rounded-lg border border-slate-800 bg-[#0b0f19]/60 px-4 py-2 text-sm text-slate-300">
+                  <span class="rounded-lg border border-slate-800 bg-[#0b0f19]/60 px-4 py-2 text-sm text-slate-300 transition duration-300 hover:border-yellow-400/40 hover:shadow-[0_0_25px_-8px_rgba(250,204,21,0.45)]">
                     {m}
                   </span>
                 ))
@@ -892,13 +1057,14 @@ const paleta = [
           </div>
 
           <!-- CTA final -->
-          <div class="mt-14 rounded-2xl border border-slate-800 bg-[#0b0f19]/60 px-6 py-12 text-center sm:px-10">
+          <div class="mt-14 rounded-2xl border border-slate-800 bg-[#0b0f19]/60 px-6 py-12 text-center transition duration-300 hover:border-yellow-400/40 hover:shadow-[0_0_35px_-8px_rgba(250,204,21,0.4)] sm:px-10">
             <h3 class="text-balance text-2xl font-bold tracking-tight text-white sm:text-3xl lg:text-4xl">
-              Convirtamos 25 años de trayectoria en un embudo que
-              <span class="text-yellow-400">vende solo</span>.
+              Transformemos 25 años de trayectoria en
+              <span class="text-yellow-400">un embudo que vende.</span>
             </h3>
             <p class="mx-auto mt-4 max-w-xl text-base leading-relaxed text-slate-400">
-              Empecemos por una sesión de Kick-off para definir el alcance y el primer activo.
+              Empecemos por una sesión de Kick-off para definir el alcance, detalles y prioridades del
+              proyecto.
             </p>
             <a
               href="https://calendar.app.google/mTu5R8CYQ7A2BKYZ7"
@@ -906,7 +1072,7 @@ const paleta = [
               rel="noopener noreferrer"
               class="mt-8 inline-flex items-center justify-center rounded-lg bg-yellow-400 px-9 py-4 text-base font-semibold text-slate-900 transition hover:bg-yellow-300"
             >
-              Agendar Kick-off de Proyecto
+              Agenda tu Kick-off
             </a>
           </div>
         </section>
@@ -942,6 +1108,8 @@ const paleta = [
         });
         // Activa/desactiva el fondo de nodos según la pestaña
         nodes.setActive(NODE_TABS.has(id));
+        // Cierra el menú móvil al navegar
+        setMenu(false);
         // Vuelve arriba al cambiar de sección
         scroller?.scrollTo({ top: 0, behavior: "smooth" });
         window.scrollTo({ top: 0, behavior: "smooth" });
@@ -949,6 +1117,23 @@ const paleta = [
 
       buttons.forEach((btn) => {
         btn.addEventListener("click", () => activate(btn.dataset.tab));
+      });
+
+      // ====================================================================
+      //  MENÚ SÁNDWICH (móvil)
+      // ====================================================================
+      const mobileMenu = document.getElementById("mobile-menu");
+      const menuToggle = document.getElementById("menu-toggle");
+      const iconOpen = document.getElementById("menu-icon-open");
+      const iconClose = document.getElementById("menu-icon-close");
+      function setMenu(open) {
+        if (!mobileMenu) return;
+        mobileMenu.classList.toggle("hidden", !open);
+        iconOpen?.classList.toggle("hidden", open);
+        iconClose?.classList.toggle("hidden", !open);
+      }
+      menuToggle?.addEventListener("click", () => {
+        setMenu(mobileMenu.classList.contains("hidden"));
       });
 
       // ====================================================================
