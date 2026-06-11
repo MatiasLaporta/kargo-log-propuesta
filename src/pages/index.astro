@@ -19,31 +19,51 @@ const modulos = [
   {
     n: "01",
     titulo: "Optimización de LinkedIn",
-    desc: "Perfil de empresa optimizado (titular, acerca de, servicios, destacado), optimización técnica del algoritmo y auditoría SSI de los 4 pilares.",
+    puntos: [
+      "Perfil LinkedIn Empresa optimizado (titular + acerca de + servicios + destacado).",
+      "Optimización técnica del algoritmo. (Auditoría técnica de sus 4 pilares).",
+    ],
     bonus: "Perfil de LinkedIn Personal optimizado.",
   },
   {
     n: "02",
-    titulo: 'Prospección Orgánica "Straight Line"',
-    desc: "Script de conexión, entrega de valor y CTA. Lead Magnet, embudo de conversión por autoridad y calendario de cadencia diaria.",
+    titulo: "Prospección Orgánica",
+    puntos: [
+      "Script de Prospección: Conexión, Entrega de Valor y CTA.",
+      'El "Lead Magnet": activo digital de valor.',
+      "LinkedIn Funnel: Embudo de Conversión vía Autoridad.",
+      "Protocolo de Interacción Estratégica.",
+      "Calendario de Cadencia Diaria (60 min).",
+    ],
     bonus: "Cadencia de referidos (pedido, contacto y seguimiento).",
   },
   {
     n: "03",
     titulo: "Cierre de Ventas",
-    desc: "Guion técnico de llamada de descubrimiento para Google Meet, matriz de manejo de objeciones y deck de propuesta (5–7 slides).",
+    puntos: [
+      "Guion de reunión inicial.",
+      "Matriz de Manejo de Objeciones y Respuestas.",
+      "Presentación de propuesta (deck corto 5–7 slides).",
+    ],
     bonus: "Pipeline de seguimiento (CRM simple).",
   },
   {
     n: "04",
-    titulo: "Estrategia e IA Comercial",
-    desc: "Oferta express con CTA claro y agentes de IA para grilla de contenidos, redacción de entregables y pricing nacional.",
+    titulo: "Estrategia de Contenido",
+    puntos: [
+      "Oferta express (1 paquete principal + CTA claro).",
+      "Agente de Estrategia de Contenidos y Autoridad: grilla mensual.",
+      "Agente de Redacción y Entregables: Desarrollo de publicaciones.",
+      "Agente de IA para estructurar honorarios nacionales.",
+    ],
     bonus: "Agente de IA para estructurar honorarios internacionales.",
   },
   {
     n: "05",
-    titulo: "Activos Digitales (Landing Pages)",
-    desc: "Landing que funciona como embudo de ventas, con CTA claro y optimización SEO, AEO y GEO.",
+    titulo: "Landing Pages",
+    puntos: [
+      "Landing que funciona como embudo de ventas, con CTA claro y optimización SEO, AEO y GEO.",
+    ],
     bonus: "Landing estilo tarjeta digital.",
   },
 ];
@@ -77,6 +97,46 @@ const cronograma = [
   { semana: "Semana 3", hito: "Ajustes según feedback del cliente." },
   { semana: "Semanas 4–8", hito: "Implementación y acompañamiento." },
 ];
+
+// --- Paleta de marca del cliente (Showcase) ---------------------------------
+const paleta = [
+  {
+    nombre: "KARGO · Azul Marino",
+    hex: "#0A192F",
+    swatch: "#0A192F",
+    desc: "Representa <strong>estabilidad</strong>, confianza y la solidez operativa de 25 años de trayectoria.",
+  },
+  {
+    nombre: "LOG · Naranja Industrial",
+    hex: "#FF5722",
+    swatch: "#FF5722",
+    desc: "La flecha simboliza <strong>tracción</strong> y la eliminación de cuellos de botella en la cadena logística.",
+  },
+  {
+    nombre: "Fondo Principal · Gris Humo / Blanco Hueso",
+    hex: "#F7F8FA / #FDFCF0",
+    swatch: "#F7F8FA",
+    desc: "Diseñado para entornos digitales de lectura prolongada. Al evitar el blanco puro <code>#FFFFFF</code>, <strong>reduce drásticamente la fatiga visual</strong> del tomador de decisiones. Lienzo limpio con aspecto premium de firma consultora internacional, rompiendo con la estética CM genérica de la competencia.",
+  },
+  {
+    nombre: "Texto Principal · Gris Carbón",
+    hex: "#202225",
+    swatch: "#202225",
+    desc: "Gris de alta densidad que sustituye al negro absoluto para mejorar la ergonomía de lectura en pantallas. Garantiza un <strong>contraste óptimo y nítido</strong> sobre los fondos claros, proyectando seriedad editorial, rigor técnico y claridad en los reportes de diagnóstico.",
+  },
+  {
+    nombre: "Color Primario de Marca · Azul Marino",
+    hex: "#0A192F",
+    swatch: "#0A192F",
+    desc: "Anclaje institucional de la marca. Domina los bloques estructurales de la landing para <strong>proyectar estabilidad, profundidad estratégica y madurez empresarial</strong>, conectando con directores generales y dueños de PYMES industriales.",
+  },
+  {
+    nombre: "Color de Acento Operativo · Naranja Industrial",
+    hex: "#FF5722",
+    swatch: "#FF5722",
+    desc: "Color de alta visibilidad derivado de entornos de planta y logística pesada. Se usa de forma quirúrgica y exclusiva para <strong>guiar el ojo hacia los puntos de conversión</strong>, botones de acción (CTA) e indicadores clave de rendimiento (KPIs), denotando dinamismo y ejecución.",
+  },
+];
 ---
 
 <!doctype html>
@@ -108,6 +168,42 @@ const cronograma = [
         color: #0f172a;
         border-color: #06b6d4;
       }
+
+      /* Tarjetas plegables (<details>): oculta el marcador nativo */
+      details > summary { list-style: none; }
+      details > summary::-webkit-details-marker { display: none; }
+
+      /* Prototipo Kargo-Log: botón con reflejo "shimmer" infinito */
+      .kl-shimmer { position: relative; overflow: hidden; }
+      .kl-shimmer::after {
+        content: "";
+        position: absolute;
+        top: 0; bottom: 0; left: 0;
+        width: 55%;
+        background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.55), transparent);
+        transform: translateX(-180%) skewX(-15deg);
+        animation: kl-shimmer 2.8s infinite;
+      }
+      @keyframes kl-shimmer {
+        0%   { transform: translateX(-180%) skewX(-15deg); }
+        100% { transform: translateX(220%) skewX(-15deg); }
+      }
+
+      /* Prototipo Kargo-Log: barras de KPI que crecen al mostrarse */
+      .kl-bar { animation: kl-grow 1.4s cubic-bezier(0.22, 1, 0.36, 1) both; }
+      @keyframes kl-grow { from { width: 0; } }
+
+      /* Prototipo Kargo-Log: textura de blueprint (rejilla de ingeniería) */
+      .kl-blueprint {
+        background-image:
+          linear-gradient(to right, rgba(10, 25, 47, 0.6) 1px, transparent 1px),
+          linear-gradient(to bottom, rgba(10, 25, 47, 0.6) 1px, transparent 1px);
+        background-size: 26px 26px;
+      }
+
+      /* Prototipo Kargo-Log: ruta de suministro (guiones en movimiento) */
+      .kl-path { stroke-dasharray: 8 8; animation: kl-march 1.2s linear infinite; }
+      @keyframes kl-march { to { stroke-dashoffset: -16; } }
     </style>
   </head>
 
@@ -120,6 +216,7 @@ const cronograma = [
     >
       <!-- Encabezado de la propuesta -->
       <div class="border-b border-slate-800/80 px-6 py-7">
+        <img src="/logo-ml-inv.png" alt="Matías Laporta" class="mb-5 h-12 w-auto" />
         <div class="flex items-center gap-2">
           <span class="h-2 w-2 rounded-full bg-yellow-400"></span>
           <span class="text-[11px] font-semibold tracking-widest text-slate-500 uppercase">
@@ -307,7 +404,7 @@ const cronograma = [
             <div class="grid gap-8 lg:grid-cols-2 lg:gap-14">
               <div>
                 <p class="text-sm font-semibold tracking-widest text-cyan-400 uppercase">
-                  Mi Rol
+                  Mi Enfoque
                 </p>
                 <h2 class="mt-5 text-3xl font-bold leading-snug tracking-tight text-white sm:text-4xl lg:text-5xl">
                   Consultoría B2B con foco en
@@ -338,7 +435,7 @@ const cronograma = [
             <div class="mt-12 grid gap-6 md:grid-cols-3">
               {
                 descartadas.map((c) => (
-                  <div class="rounded-xl border border-slate-800 bg-[#0b0f19]/60 p-6 transition hover:border-slate-700">
+                  <div class="rounded-xl border border-slate-800 bg-[#0b0f19]/60 p-6 transition duration-300 hover:border-red-500/40 hover:shadow-[0_0_35px_-8px_rgba(239,68,68,0.5)]">
                     <div class="flex items-center gap-3">
                       <div class="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg border border-red-500/30 bg-red-500/10 text-red-400">
                         <svg class="h-4 w-4" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2">
@@ -360,25 +457,40 @@ const cronograma = [
           <p class="text-sm font-semibold tracking-widest text-cyan-400 uppercase">
             El Sistema
           </p>
-          <h2 class="mt-5 max-w-2xl text-3xl font-bold tracking-tight text-white sm:text-4xl lg:text-5xl">
+          <h2 class="mt-5 text-3xl font-bold tracking-tight text-white sm:text-4xl lg:text-5xl lg:whitespace-nowrap">
             5 pilares para un embudo <span class="text-yellow-400">predecible</span>.
           </h2>
           <div class="mt-12 space-y-4">
             {
               modulos.map((m) => (
-                <div class="grid gap-4 rounded-xl border border-slate-800 bg-[#0b0f19]/60 p-6 transition hover:border-cyan-500/40 sm:grid-cols-[auto_1fr] sm:gap-6">
-                  <span class="font-mono text-2xl font-bold text-cyan-400/80 tabular-nums">
-                    {m.n}
-                  </span>
-                  <div>
-                    <h3 class="text-lg font-semibold text-white lg:text-xl">{m.titulo}</h3>
-                    <p class="mt-2 text-sm leading-relaxed text-slate-400 lg:text-base">{m.desc}</p>
-                    <p class="mt-4 inline-flex flex-wrap items-center gap-2 rounded-lg border border-yellow-400/20 bg-yellow-400/5 px-3 py-1.5 text-sm">
+                <details class="group rounded-xl border border-slate-800 bg-[#0b0f19]/60 transition duration-300 hover:border-yellow-400/40 hover:shadow-[0_0_35px_-8px_rgba(250,204,21,0.45)] open:border-yellow-400/30">
+                  <summary class="flex cursor-pointer items-center gap-4 p-6 sm:gap-6">
+                    <span class="font-mono text-2xl font-bold text-cyan-400/80 tabular-nums">
+                      {m.n}
+                    </span>
+                    <h3 class="flex-1 text-lg font-semibold text-white lg:text-xl">{m.titulo}</h3>
+                    <svg
+                      class="h-5 w-5 shrink-0 text-slate-500 transition-transform duration-300 group-open:rotate-180"
+                      viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2"
+                    >
+                      <path d="M6 8l4 4 4-4" stroke-linecap="round" stroke-linejoin="round" />
+                    </svg>
+                  </summary>
+                  <div class="px-6 pb-6">
+                    <ul class="space-y-2.5 border-t border-slate-800/80 pt-5">
+                      {m.puntos.map((p) => (
+                        <li class="flex gap-3 text-sm leading-relaxed text-slate-400 lg:text-base">
+                          <span class="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-cyan-400/70" />
+                          <span>{p}</span>
+                        </li>
+                      ))}
+                    </ul>
+                    <p class="mt-5 inline-flex flex-wrap items-center gap-2 rounded-lg border border-yellow-400/20 bg-yellow-400/5 px-3 py-1.5 text-sm">
                       <span class="text-xs font-bold tracking-wide text-yellow-400 uppercase">Bonus</span>
                       <span class="text-slate-300">{m.bonus}</span>
                     </p>
                   </div>
-                </div>
+                </details>
               ))
             }
           </div>
@@ -387,61 +499,267 @@ const cronograma = [
         <!-- ============================ TAB 03 ============================ -->
         <!-- SHOWCASE (lienzo claro que rompe el patrón oscuro)                 -->
         <section data-panel="showcase" class="hidden">
-          <div class="overflow-hidden rounded-3xl bg-gray-100 text-gray-900 shadow-2xl shadow-black/40">
+          <!-- Lienzo con la paleta del cliente: Gris Humo + texto Gris Carbón -->
+          <div class="overflow-hidden rounded-3xl bg-[#F7F8FA] text-[#202225] shadow-2xl shadow-black/40">
             <div class="p-8 sm:p-12 lg:p-16">
-              <p class="text-xs font-semibold tracking-widest text-orange-600 uppercase">
+              <p class="text-xs font-semibold tracking-widest text-[#FF5722] uppercase">
                 Showcase · Previsualización Alpha
               </p>
-              <h2 class="mt-4 text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
+              <h2 class="mt-4 text-3xl font-bold tracking-tight sm:text-4xl">
                 Tu nueva identidad digital:
-                <span class="text-[#1e3a8a]">Kargo</span><span class="text-orange-600">-Log</span>
+                <span class="text-[#0A192F]">Kargo</span><span class="text-[#FF5722]">-Log</span>
               </h2>
 
-              <!-- Logotipo horizontal (Propuesta 1) -->
-              <div class="mt-10 flex items-center justify-center rounded-2xl border border-gray-200 bg-white px-6 py-16 shadow-sm">
-                <span class="text-5xl font-extrabold tracking-tight sm:text-6xl lg:text-7xl">
-                  <span class="text-[#1e3a8a]">KARGO</span><span class="text-orange-600">-LOG</span>
-                  <span class="ml-1 inline-block text-orange-600" aria-hidden="true">&rarr;</span>
-                </span>
+              <!-- Logotipo real del cliente -->
+              <div class="mt-10 flex items-center justify-center rounded-2xl border border-black/5 bg-white px-6 py-12 shadow-sm transition duration-300 hover:border-[#FF5722]/50 hover:shadow-[0_0_35px_-6px_rgba(255,87,34,0.5)]">
+                <img
+                  src="/logo-kargo-log.png"
+                  alt="Logo Kargo-Log"
+                  class="h-auto w-full max-w-md"
+                />
               </div>
 
-              <!-- Justificación de diseño (análisis de color) -->
-              <div class="mt-8 grid gap-5 sm:grid-cols-2">
-                <div class="rounded-xl border border-gray-200 bg-white p-6">
-                  <div class="flex items-center gap-3">
-                    <span class="h-8 w-8 rounded-md border border-black/10 bg-[#1e3a8a]"></span>
-                    <div>
-                      <p class="text-sm font-semibold text-gray-900">KARGO · Azul Marino</p>
-                      <p class="font-mono text-xs text-gray-500">#1E3A8A</p>
+              <!-- Colores del isologo (glow naranja en hover) -->
+              <div class="mt-8 grid grid-cols-1 gap-6 md:grid-cols-2">
+                {
+                  paleta.slice(0, 2).map((c) => (
+                    <div class="rounded-xl border border-black/10 bg-white p-6 shadow-sm transition duration-300 hover:border-[#FF5722]/50 hover:shadow-[0_0_35px_-6px_rgba(255,87,34,0.5)]">
+                      <div class="flex items-center gap-3">
+                        <span
+                          class="h-9 w-9 shrink-0 rounded-md border border-black/10"
+                          style={`background:${c.swatch}`}
+                        />
+                        <div>
+                          <p class="text-sm font-semibold text-[#202225]">{c.nombre}</p>
+                          <p class="font-mono text-xs text-gray-500">{c.hex}</p>
+                        </div>
+                      </div>
+                      <p class="mt-4 text-sm leading-relaxed text-gray-600" set:html={c.desc} />
                     </div>
-                  </div>
-                  <p class="mt-4 text-sm leading-relaxed text-gray-600">
-                    Denota la <span class="font-semibold text-gray-900">solidez del respaldo
-                    corporativo</span>: 25 años de trayectoria operativa que dan confianza al decisor.
-                  </p>
-                </div>
-                <div class="rounded-xl border border-gray-200 bg-white p-6">
-                  <div class="flex items-center gap-3">
-                    <span class="h-8 w-8 rounded-md border border-black/10 bg-orange-600"></span>
-                    <div>
-                      <p class="text-sm font-semibold text-gray-900">LOG · Naranja Industrial</p>
-                      <p class="font-mono text-xs text-gray-500">#EA580C</p>
-                    </div>
-                  </div>
-                  <p class="mt-4 text-sm leading-relaxed text-gray-600">
-                    La flecha integrada transmite
-                    <span class="font-semibold text-gray-900">tracción logística</span> y la
-                    eliminación de cuellos de botella en la cadena.
-                  </p>
-                </div>
+                  ))
+                }
               </div>
 
-              <!-- Placeholder para los activos alfa -->
-              <div class="mt-8 flex aspect-[16/9] items-center justify-center rounded-2xl border-2 border-dashed border-gray-300 bg-gray-50 px-6 text-center">
-                <span class="max-w-md text-sm font-medium text-gray-400">
-                  [Previsualización Alfa: Landing Page Principal y Tarjeta de Presentación
-                  Digital — Digital-Card]
-                </span>
+              <!-- Paleta de colores de marca -->
+              <p class="mt-12 text-xs font-semibold tracking-widest text-[#FF5722] uppercase">
+                Paleta de colores
+              </p>
+              <div class="mt-5 grid grid-cols-1 gap-6 md:grid-cols-2">
+                {
+                  paleta.slice(2).map((c) => (
+                    <div class="rounded-xl border border-black/10 bg-white p-6 shadow-sm transition duration-300 hover:border-[#FF5722]/50 hover:shadow-[0_0_35px_-6px_rgba(255,87,34,0.5)]">
+                      <div class="flex items-center gap-3">
+                        <span
+                          class="h-9 w-9 shrink-0 rounded-md border border-black/10"
+                          style={`background:${c.swatch}`}
+                        />
+                        <div>
+                          <p class="text-sm font-semibold text-[#202225]">{c.nombre}</p>
+                          <p class="font-mono text-xs text-gray-500">{c.hex}</p>
+                        </div>
+                      </div>
+                      <p class="mt-4 text-sm leading-relaxed text-gray-600" set:html={c.desc} />
+                    </div>
+                  ))
+                }
+              </div>
+
+              <!-- ============================================================ -->
+              <!-- PROTOTIPO ALPHA · Landing de Kargo-Log (navegador simulado)  -->
+              <!-- ============================================================ -->
+              <p class="mt-10 text-xs font-semibold tracking-widest text-[#FF5722] uppercase">
+                Prototipo Alpha · Landing Page
+              </p>
+              <div class="mt-4 overflow-hidden rounded-2xl border border-black/10 bg-white shadow-xl shadow-black/10">
+                <!-- Barra del navegador simulado -->
+                <div class="flex items-center gap-2 border-b border-black/10 bg-[#ECEEF1] px-4 py-3">
+                  <span class="h-3 w-3 rounded-full bg-[#FF5F57]" />
+                  <span class="h-3 w-3 rounded-full bg-[#FEBC2E]" />
+                  <span class="h-3 w-3 rounded-full bg-[#28C840]" />
+                  <div class="ml-3 hidden flex-1 rounded-md border border-black/5 bg-white px-3 py-1 text-xs text-gray-400 sm:block">
+                    kargo-log.com
+                  </div>
+                </div>
+
+                <!-- Lienzo de la landing -->
+                <div class="relative isolate overflow-hidden bg-[#F7F8FA] font-sans text-[#202225]">
+                  <!-- Capa 1: textura blueprint (rejilla de ingeniería) -->
+                  <div class="kl-blueprint pointer-events-none absolute inset-0 opacity-[0.04]" />
+                  <!-- Capa 2: glows ambientales (azul marino + naranja) -->
+                  <div class="pointer-events-none absolute -left-24 top-8 h-72 w-72 rounded-full bg-[#0A192F] opacity-[0.07] blur-[100px]" />
+                  <div class="pointer-events-none absolute -right-16 top-1/3 h-80 w-80 rounded-full bg-[#FF5722] opacity-[0.09] blur-[100px]" />
+                  <!-- Capa 3: ruta de suministro narrativa (guiones naranjas en movimiento) -->
+                  <svg class="pointer-events-none absolute inset-0 h-full w-full" preserveAspectRatio="none" viewBox="0 0 400 800" fill="none" aria-hidden="true">
+                    <path class="kl-path" d="M30 240 C 170 300, 250 350, 200 450 S 90 600, 370 650" stroke="#FF5722" stroke-width="1.5" stroke-opacity="0.4" stroke-linecap="round" />
+                  </svg>
+
+                  <!-- Contenido por encima de las capas de fondo -->
+                  <div class="relative z-10">
+                  <!-- Header + isologo corregido (efecto FedEx: flecha en LOG) -->
+                  <div class="flex items-center justify-between border-b border-black/5 px-5 py-4 sm:px-8">
+                    <img src="/logo-kargo-log.png" alt="Kargo-Log" class="h-6 w-auto sm:h-7" />
+                    <div class="hidden gap-5 text-xs font-medium text-[#202225]/60 sm:flex">
+                      <span>Inicio</span>
+                      <span>Diagnóstico</span>
+                      <span>Soluciones</span>
+                    </div>
+                  </div>
+
+                  <!-- Hero asimétrico en 2 columnas (semántica intencionalmente plana) -->
+                  <div class="grid grid-cols-1 items-center gap-8 px-5 py-12 sm:px-10 lg:grid-cols-12">
+                    <!-- Columna izquierda · discurso plano -->
+                    <div class="lg:col-span-6">
+                      <div id="seo-block" class="bg-gradient-to-br from-[#202225] via-[#0A192F] to-[#202225] bg-clip-text text-2xl font-bold leading-tight text-transparent sm:text-3xl lg:text-[2.5rem] lg:leading-[1.1]">
+                        Optimización y Eficiencia de Procesos para la Cadena de Suministro Industrial.
+                      </div>
+                      <div class="mt-4 text-sm leading-relaxed text-[#202225]/70 sm:text-base">
+                        Consultoría especializada para empresas familiares y PYMES de 50 a 200
+                        colaboradores en sectores de manufactura, transporte y operaciones intensivas.
+                      </div>
+                      <div class="mt-7">
+                        <span class="kl-shimmer inline-block cursor-pointer rounded-lg bg-[#FF5722] px-6 py-3 text-sm font-bold text-white shadow-lg shadow-[#FF5722]/30 transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:shadow-[#FF5722]/40">
+                          Agendar Diagnóstico Inicial
+                        </span>
+                      </div>
+                    </div>
+
+                    <!-- Columna derecha · panel de software con profundidad -->
+                    <div class="relative lg:col-span-6">
+                      <!-- Silueta abstracta de infraestructura logística (racks) difuminada -->
+                      <svg class="pointer-events-none absolute -right-6 -top-8 h-40 w-40 text-[#0A192F] opacity-[0.06] blur-[2px]" viewBox="0 0 64 64" fill="currentColor" aria-hidden="true">
+                        <rect x="4" y="8" width="56" height="6" rx="1" />
+                        <rect x="4" y="29" width="56" height="6" rx="1" />
+                        <rect x="4" y="50" width="56" height="6" rx="1" />
+                        <rect x="8" y="8" width="5" height="48" />
+                        <rect x="30" y="8" width="5" height="48" />
+                        <rect x="51" y="8" width="5" height="48" />
+                      </svg>
+                      <!-- Panel flotante con desenfoque de cristal (glassmorphism) -->
+                      <div class="relative rounded-2xl border border-white/40 bg-white/60 p-6 shadow-2xl shadow-[#0A192F]/10 backdrop-blur-lg">
+                        <!-- Dashboard de KPIs -->
+                        <div class="flex items-center justify-between">
+                          <div class="text-[11px] font-bold tracking-wide text-[#202225]/50 uppercase">
+                            Dashboard Operativo
+                          </div>
+                          <div class="flex items-center gap-1.5 text-[10px] font-semibold text-[#FF5722]">
+                            <span class="h-1.5 w-1.5 animate-pulse rounded-full bg-[#FF5722]" />
+                            En vivo
+                          </div>
+                        </div>
+                        <div class="mt-4 space-y-4">
+                          <div>
+                            <div class="flex justify-between text-xs font-semibold text-[#202225]">
+                              <span>Productividad de Equipos</span><span class="text-[#FF5722]">+34%</span>
+                            </div>
+                            <div class="mt-1.5 h-2 w-full overflow-hidden rounded-full bg-gray-100">
+                              <div class="kl-bar h-full rounded-full bg-[#FF5722]" style="width:74%" />
+                            </div>
+                          </div>
+                          <div>
+                            <div class="flex justify-between text-xs font-semibold text-[#202225]">
+                              <span>Control de Inventarios</span><span class="text-[#FF5722]">99.2%</span>
+                            </div>
+                            <div class="mt-1.5 h-2 w-full overflow-hidden rounded-full bg-gray-100">
+                              <div class="kl-bar h-full rounded-full bg-[#FF5722]" style="width:99%" />
+                            </div>
+                          </div>
+                          <div>
+                            <div class="flex justify-between text-xs font-semibold text-[#202225]">
+                              <span>Reducción de Sobrecostos</span><span class="text-[#FF5722]">41%</span>
+                            </div>
+                            <div class="mt-1.5 h-2 w-full overflow-hidden rounded-full bg-gray-100">
+                              <div class="kl-bar h-full rounded-full bg-[#FF5722]" style="width:61%" />
+                            </div>
+                          </div>
+                        </div>
+
+                        <!-- Gráfico de eliminación de cuellos de botella -->
+                        <div class="mt-6 border-t border-gray-100 pt-5">
+                          <div class="text-[11px] font-bold tracking-wide text-[#202225]/50 uppercase">
+                            Eliminación de cuellos de botella
+                          </div>
+                          <div class="mt-3 flex items-center gap-1.5">
+                            <div class="flex h-9 flex-1 items-center justify-center rounded-md bg-[#0A192F] text-[10px] font-bold text-white">
+                              Recepción
+                            </div>
+                            <div class="h-0 w-4 border-t-2 border-dashed border-gray-300" />
+                            <div class="flex h-9 flex-1 animate-pulse items-center justify-center rounded-md bg-[#FF5722]/15 text-[10px] font-bold text-[#FF5722] ring-2 ring-[#FF5722]">
+                              Cuello
+                            </div>
+                            <div class="h-0 w-4 border-t-2 border-dashed border-gray-300" />
+                            <div class="flex h-9 flex-1 items-center justify-center rounded-md bg-[#0A192F] text-[10px] font-bold text-white">
+                              Despacho
+                            </div>
+                            <svg class="h-5 w-5 shrink-0 text-[#FF5722]" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.5">
+                              <path d="M4 10h11M11 6l4 4-4 4" stroke-linecap="round" stroke-linejoin="round" />
+                            </svg>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- Bloque de dolores · 3 tarjetas de diagnóstico -->
+                  <div class="grid grid-cols-1 gap-4 px-5 pb-10 sm:px-10 md:grid-cols-3">
+                    <div class="rounded-xl border border-gray-200 bg-[#FDFCF0] p-5 shadow-sm transition-all duration-300 hover:-translate-y-0.5 hover:scale-[1.01] hover:border-[#FF5722]/30 hover:shadow-[0_22px_45px_-15px_rgba(255,87,34,0.35)]">
+                      <span class="animate-pulse rounded-full bg-orange-100 px-2 py-0.5 text-xs font-bold text-[#FF5722]">
+                        ! STOCK_404
+                      </span>
+                      <div class="mt-3 text-sm leading-relaxed text-[#202225]/80">
+                        Pérdida de trazabilidad: actualmente no se sabe con exactitud cuánto inventario
+                        existe ni en qué ubicación física se encuentra dentro del almacén en tiempo real.
+                      </div>
+                    </div>
+                    <div class="rounded-xl border border-gray-200 bg-[#FDFCF0] p-5 shadow-sm transition-all duration-300 hover:-translate-y-0.5 hover:scale-[1.01] hover:border-[#FF5722]/30 hover:shadow-[0_22px_45px_-15px_rgba(255,87,34,0.35)]">
+                      <span class="animate-pulse rounded-full bg-orange-100 px-2 py-0.5 text-xs font-bold text-[#FF5722]">
+                        ! DELAY_HIGH
+                      </span>
+                      <div class="mt-3 text-sm leading-relaxed text-[#202225]/80">
+                        Sobrecostos logísticos derivados de rutas, tiempos y procesos de despacho que no
+                        han sido debidamente estandarizados ni medidos de forma sistemática.
+                      </div>
+                    </div>
+                    <div class="rounded-xl border border-gray-200 bg-[#FDFCF0] p-5 shadow-sm transition-all duration-300 hover:-translate-y-0.5 hover:scale-[1.01] hover:border-[#FF5722]/30 hover:shadow-[0_22px_45px_-15px_rgba(255,87,34,0.35)]">
+                      <span class="animate-pulse rounded-full bg-orange-100 px-2 py-0.5 text-xs font-bold text-[#FF5722]">
+                        ! LOAD_99%
+                      </span>
+                      <div class="mt-3 text-sm leading-relaxed text-[#202225]/80">
+                        Equipos de trabajo saturados ejecutando tareas manuales repetitivas que un buen
+                        sistema de indicadores podría ordenar, priorizar y eventualmente automatizar.
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- Footer · tarjeta de autoridad (perfil del cliente) -->
+                  <div class="bg-[#0A192F] px-5 py-9 sm:px-10">
+                    <div class="mx-auto flex max-w-xl flex-col items-center gap-5 text-center sm:flex-row sm:text-left">
+                      <div class="h-20 w-20 shrink-0 overflow-hidden rounded-full border-4 border-[#FF5722] shadow-lg shadow-[#FF5722]/30">
+                        <img src="/pp.png" alt="Sergio Cachay" class="h-full w-full object-cover" />
+                      </div>
+                      <div class="flex-1">
+                        <div class="font-bold text-white">Sergio Cachay</div>
+                        <div class="mt-1 text-xs leading-snug text-white/60">
+                          Más de 25 años liderando operaciones en compañías de consumo masivo y automotriz.
+                        </div>
+                        <div class="mt-3 flex justify-center gap-2 sm:justify-start">
+                          <span class="flex cursor-pointer items-center gap-1.5 rounded-md bg-white px-3 py-1.5 text-xs font-semibold text-[#0A192F] opacity-90 transition hover:opacity-100">
+                            <svg class="h-3.5 w-3.5" viewBox="0 0 24 24" fill="currentColor">
+                              <path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5zM3 9h4v12H3zM9 9h3.8v1.7h.05c.53-1 1.83-2.05 3.77-2.05 4.03 0 4.78 2.65 4.78 6.1V21h-4v-5.4c0-1.3-.02-2.96-1.8-2.96-1.8 0-2.08 1.4-2.08 2.86V21H9z" />
+                            </svg>
+                            LinkedIn
+                          </span>
+                          <span class="flex cursor-pointer items-center gap-1.5 rounded-md bg-[#FF5722] px-3 py-1.5 text-xs font-semibold text-white opacity-90 transition hover:opacity-100">
+                            <svg class="h-3.5 w-3.5" viewBox="0 0 24 24" fill="currentColor">
+                              <path d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2 22l5.25-1.38c1.45.79 3.08 1.21 4.79 1.21 5.46 0 9.91-4.45 9.91-9.91S17.5 2 12.04 2zm5.8 14.01c-.24.68-1.4 1.3-1.95 1.38-.5.07-1.13.1-1.83-.11-.42-.13-.96-.31-1.65-.61-2.9-1.25-4.79-4.17-4.94-4.36-.14-.19-1.18-1.57-1.18-3 0-1.43.75-2.13 1.02-2.42.27-.29.58-.36.78-.36.19 0 .39 0 .56.01.18.01.42-.07.66.5.24.59.82 2.02.89 2.17.07.14.12.31.02.5-.09.19-.14.31-.28.48-.14.17-.29.37-.42.5-.14.14-.28.29-.12.57.16.28.72 1.18 1.54 1.91 1.06.95 1.95 1.24 2.23 1.38.28.14.44.12.6-.07.16-.19.69-.8.87-1.08.18-.28.36-.23.61-.14.25.09 1.59.75 1.86.89.27.14.45.21.52.32.07.12.07.66-.17 1.34z" />
+                            </svg>
+                            WhatsApp
+                          </span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
