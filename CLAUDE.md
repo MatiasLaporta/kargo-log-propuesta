@@ -26,6 +26,7 @@ There are no tests, linters, or a test runner configured. Validation = `npm run 
 **The entire site is one file: `src/pages/index.astro`** (~1200 lines). It is served at the site root `/` (there is no separate index/redirect page). Structure within the file:
 
 1. **Frontmatter data arrays** (top of file) — `tabs`, `modulos`, `descartadas`, `precios`, `cronograma`, `paleta`. Edit copy/pricing here, not in the markup; the markup `.map()`s over these.
+   - **PEN/soles gotcha:** prices are USD-first; the soles amounts are **hardcoded strings, not computed** (`pen: "1.035"` in `precios`, plus standalone `S/ ...` spans in the markup for the TOTAL, the Full Stack package, the two hosting cards, and the conversion note). The convention is **1 USD ≈ S/ 3,45**. If the rate or any USD figure changes, every soles value must be updated by hand — there is no single source of truth.
 2. **`<style is:global>`** — tab-active states, `<details>` marker hiding, and the custom keyframe animations: `kl-shimmer` (button reflection), `kl-bar`/`kl-grow` (KPI bars), `kl-blueprint` (engineering grid texture), `kl-path`/`kl-march` (marching-ants supply line).
 3. **Sidebar** (`lg:` fixed) and **mobile header** (`lg:hidden`, hamburger menu) — both render the same `tabs` array; their buttons share `data-tab` and the `nav-side`/`nav-top` classes.
 4. **Four tab panels** — `<section data-panel="...">`: `diagnostico`, `soluciones`, `showcase`, `inversion`.
@@ -50,4 +51,8 @@ The tab-3 prototypes (landing mockup + phone "Digital-Card") intentionally use f
 
 Push to `main` → `.github/workflows/deploy.yml` (uses `withastro/action`) builds and publishes to GitHub Pages. `public/CNAME` holds the custom domain and `site` is set in `astro.config.mjs`; both must stay in sync with the domain.
 
-**Asset naming gotcha:** GitHub Pages serves on Linux (case-sensitive). Files in `public/` referenced from markup must use **lowercase, no-spaces** names (e.g. `logo-kargo-log.png`, not `Logo Kargo-Log.png`) or they 404 in production while working locally on Windows. The git account for this repo is `MatiasLaporta`.
+**Asset naming gotcha:** GitHub Pages serves on Linux (case-sensitive). Files in `public/` referenced from markup must use **lowercase, no-spaces** names (e.g. `logo-kargo-log.png`, not `Logo Kargo-Log.png`) or they 404 in production while working locally on Windows.
+
+The repo is `MatiasLaporta/kargo-log-propuesta`; the git identity for commits is `MatiasLaporta` / `matias@digitals.cl`.
+
+**Windows/PowerShell commit gotcha:** commit messages with accented characters (`ó`, `ñ`, …) passed via a PowerShell here-string get mangled. Write the message to a file and use `git commit -F <file>` instead.
